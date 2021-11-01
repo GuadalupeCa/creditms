@@ -1,6 +1,6 @@
 package com.finance.creditms.service;
 
-import com.finance.creditms.dao.repository.CreditRepositoryInterface;
+import com.finance.creditms.repository.CreditRepository;
 import com.finance.creditms.domain.document.Credit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,17 +10,20 @@ import reactor.core.publisher.Mono;
 @Service
 public class CreditService {
     @Autowired
-    private CreditRepositoryInterface creditRepositoryInterface;
+    private CreditRepository creditRepository;
 
-    public Flux findAll(){
-        return creditRepositoryInterface.findAll();
+    public Flux<Credit> findAll(){
+        return creditRepository.findAll();
     }
 
-    public Mono findById(String id){
-        return creditRepositoryInterface.findById(id);
+    public Mono<Credit> findById(String id){
+        return creditRepository.findById(id);
     }
 
-    public Mono save(Credit credit){
-        return creditRepositoryInterface.save(credit);
+    public Mono<Credit> save(Credit credit){
+        return creditRepository.save(credit);
+    }
+    public Mono<Void> deleteById(String id){
+        return creditRepository.deleteById(id);
     }
 }
