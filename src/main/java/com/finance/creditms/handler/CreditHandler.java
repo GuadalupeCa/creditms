@@ -25,10 +25,10 @@ public class CreditHandler {
                 .body(creditService.findAll(), Credit.class);
     }
 
-    public Mono<Credit> findById(ServerRequest serverRequest) {
+    public Mono findById(ServerRequest serverRequest) {
         String id = serverRequest.pathVariable("id");
         log.info("Find by Id: {}", id);
-        return creditService.findById(id);
+        return ServerResponse.ok().body(creditService.findById(id), Credit.class);
     }
 
     public Mono save(ServerRequest serverRequest) {
