@@ -34,4 +34,9 @@ public class CreditRepositoryImpl implements CreditRepository {
     public Mono<Void> deleteById(String id) {
         return creditRepositoryExt.deleteById(id);
     }
+
+    @Override
+    public Flux<Credit> findByClientDocumentIdentityNumber(String documentIdentityNumber) {
+        return creditRepositoryExt.findByClientDocumentIdentityNumberAndStatusTrue(documentIdentityNumber);
+    }
 }

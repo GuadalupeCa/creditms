@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
+import org.springframework.web.reactive.function.server.ServerResponse;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
@@ -13,7 +14,7 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 @Configuration
 public class FunctionalRouter {
     @Bean
-    public RouterFunction route(CreditHandler creditHandler) {
+    public RouterFunction<ServerResponse> route(CreditHandler creditHandler) {
         return RouterFunctions
                 .route(GET("/credit").and(accept(MediaType.APPLICATION_JSON)), creditHandler::findAll)
                 .andRoute(GET("/credit/{id}").and(accept(MediaType.APPLICATION_JSON)), creditHandler::findById)
