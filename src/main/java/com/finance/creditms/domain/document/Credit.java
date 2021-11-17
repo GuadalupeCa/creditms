@@ -19,10 +19,11 @@ public class Credit {
     private Client client;
     private String account;
     private Product product;
+    private CreditCard creditCard;
     private Double interestRate;
-    private Integer term;
-    private Integer numberFees;
     private double balance;
+    private double lineCredit;
+    private double initialLineCredit;
     private String currency;
     private boolean status = true;
 
@@ -33,14 +34,15 @@ public class Credit {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date lastMovement;
 
-    public Credit(Client client, String account, Product product, Double interestRate, Integer term, Integer numberFees, double balance, String currency, boolean status, Date createAt, Date cancelAt, Date lastMovement) {
+    public Credit(Client client, String account, Product product, CreditCard creditCard, Double interestRate, double balance, double lineCredit, double initialLineCredit, String currency, boolean status, Date createAt, Date cancelAt, Date lastMovement) {
         this.client = client;
         this.account = account;
         this.product = product;
+        this.creditCard = creditCard;
         this.interestRate = interestRate;
-        this.term = term;
-        this.numberFees = numberFees;
         this.balance = balance;
+        this.lineCredit = lineCredit;
+        this.initialLineCredit = initialLineCredit;
         this.currency = currency;
         this.status = status;
         this.createAt = createAt;

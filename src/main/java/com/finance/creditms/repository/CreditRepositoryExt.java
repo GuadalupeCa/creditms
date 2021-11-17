@@ -6,5 +6,5 @@ import reactor.core.publisher.Flux;
 
 public interface CreditRepositoryExt extends ReactiveMongoRepository<Credit,String> {
     Flux<Credit> findByClientDocumentIdentityNumberAndStatusTrue(String documentIdentityNumber);
-
+    Flux<Credit> findByAccount(String account);
 }

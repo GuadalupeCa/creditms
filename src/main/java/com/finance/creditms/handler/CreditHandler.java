@@ -76,4 +76,10 @@ public class CreditHandler {
         log.info("delete credit by id");
         return creditService.deleteById(id).then(ServerResponse.noContent().build());
     }
+
+    public Mono findByAccount(ServerRequest serverRequest) {
+        String account = serverRequest.pathVariable("account");
+        log.info("Find by Account: {}", account);
+        return ServerResponse.ok().body(creditService.findByAccount(account), Credit.class);
+    }
 }

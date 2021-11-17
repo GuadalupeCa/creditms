@@ -39,4 +39,9 @@ public class CreditRepositoryImpl implements CreditRepository {
     public Flux<Credit> findByClientDocumentIdentityNumber(String documentIdentityNumber) {
         return creditRepositoryExt.findByClientDocumentIdentityNumberAndStatusTrue(documentIdentityNumber);
     }
+
+    @Override
+    public Flux<Credit> findByAccount(String account) {
+        return creditRepositoryExt.findByAccount(account);
+    }
 }

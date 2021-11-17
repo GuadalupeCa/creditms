@@ -18,6 +18,7 @@ public class FunctionalRouter {
         return RouterFunctions
                 .route(GET("/credit").and(accept(MediaType.APPLICATION_JSON)), creditHandler::findAll)
                 .andRoute(GET("/credit/{id}").and(accept(MediaType.APPLICATION_JSON)), creditHandler::findById)
+                .andRoute(GET("/credit/account/{account}").and(accept(MediaType.APPLICATION_JSON)), creditHandler::findByAccount)
                 .andRoute(POST("/credit/save").and(accept(MediaType.APPLICATION_JSON)), creditHandler::save)
                 .andRoute(PUT("/credit/update").and(accept(MediaType.APPLICATION_JSON)), creditHandler::update)
                 .andRoute(DELETE("/credit/delete/{id}").and(accept(MediaType.APPLICATION_JSON)), creditHandler::deleteById);
